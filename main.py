@@ -21,11 +21,12 @@ def process_review_page(reviews_html):
 	for review in reviews_html:
 		review_dict = {}
 
+		# no need to process further if there's no review_id
+		if not review.a:
+			continue
+
 		# get review id
 		review_id = review.a["name"]
-		# no need to process further if there's no review_id
-		if not review_id:
-			continue
 		review_dict["review_id"] = review_id
 		print(review_dict["review_id"])
 
