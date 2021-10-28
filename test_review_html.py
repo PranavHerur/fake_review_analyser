@@ -262,9 +262,6 @@ specific_ratings_test_html_complex_ratings = '''
 <!-- REVIEW RATING - RECOMMEND DEALER -->
 <div class="tr">
 <div class="lt-grey small-text td">Recommend Dealer</div>
-<div class="td small-text boldest">
-                Yes
-            </div>
 </div>
 </div>
 </div>

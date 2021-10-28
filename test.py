@@ -78,6 +78,17 @@ class TestUrlCreation(unittest.TestCase):
 		for k,v in results.items():
 			self.assertEqual(v, str(review_dict_test[k]))
 
+	def test_dealer_recommendation_extractor(self):
+		from main import get_dealer_recommendation
+		from bs4 import BeautifulSoup as soup
+		from test_review_html import specific_ratings_test_html, specific_ratings_test_html_complex_ratings
+
+		results = get_dealer_recommendation(soup(specific_ratings_test_html, 'html.parser'))
+		self.assertEqual(results, 'Yes')
+
+		results = get_dealer_recommendation(soup(specific_ratings_test_html_complex_ratings, 'html.parser'))
+		self.assertEqual(results, '')
+
 
 if __name__ == '__main__':
 	unittest.main()
