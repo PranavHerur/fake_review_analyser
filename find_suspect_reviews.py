@@ -37,23 +37,24 @@ def clean_data(df):
 	return sentiment_df
 
 
-def print_top3_offenders(df, top3_offender_ids):
-	print(df[df["review_id"].isin(top3_offender_ids)].to_string())
-
-
 def post_process(sentiment_df):
 	sentiment_df["pos/neu"] = sentiment_df.apply(lambda r: r.pos / r.neu, axis=1)
 	sentiment_df["verb/noun"] = sentiment_df.apply(lambda r: r.count_verbs / r.count_nouns, axis=1)
-
-	print(sentiment_df["pos/neu"].mean() + sentiment_df["pos/neu"].std()*3)
-	too_postive_df = sentiment_df[(sentiment_df.pos > (sentiment_df["pos/neu"].mean() + sentiment_df["pos/neu"].std()*3))]
-	return too_postive_df
+	return sentiment_df
 
 
-def get_top3_offenders(too_postive_df):
+def get_top3_offenders(too_postive_df, search_var="pos/neu"):
 	print(too_postive_df.describe().to_string())
-	print(too_postive_df.sort_values("pos/neu", ascending=False).to_string())
-	return too_postive_df.sort_values("pos/neu", ascending=False).head(3).review_id.values
+	print(too_postive_df[search_var].mean() + too_postive_df[search_var].std() * 2)
+	too_postive_df = too_postive_df[(too_postive_df[search_var] > (too_postive_df[search_var].mean() + too_postive_df[
+		search_var].std() * 2))]
+
+	print(too_postive_df.sort_values(search_var, ascending=False).to_string())
+	return too_postive_df.sort_values(search_var, ascending=False).head(3).review_id.values
+
+
+def print_top3_offenders(df, top3_offender_ids):
+	print(df[df["review_id"].isin(top3_offender_ids)].to_string())
 
 
 def analyze_reviews():
