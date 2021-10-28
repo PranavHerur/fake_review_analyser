@@ -17,7 +17,8 @@ class TestUrlCreation(unittest.TestCase):
 		from test_review_html import test_html
 
 		results = process_review_page([soup(test_html, 'html.parser')])
-		print(results)
+		test_results = [{'review_id': 'r8764447', 'rating': '50', 'sales_visit_reason': 'SALES VISIT - USED', 'car_purchase_type': 'USED', 'username': 'Abygail', 'review_text': 'First time to finance and was super nervous but they made the process so easy and help me understand every little detail! Adrian was quick to help me find the PERFECT vehicle that’s reliable, affordable and something I am going to love for a long time!!!! ', 'customer_service': '50', 'friendliness': '50', 'pricing': '50', 'overall_experience': '50', 'recommend_dealer': 'Yes', 'employee_ratings': [('273456', 'Adrian "AyyDee" Cortes', '5.0'), ('640356', 'Taylor Prickett', '5.0')]}]
+		self.assertEqual(results, test_results)
 
 	def test_general_rating_extractor(self):
 		from main import get_general_rating
