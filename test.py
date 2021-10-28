@@ -37,10 +37,13 @@ class TestUrlCreation(unittest.TestCase):
 	def test_sales_type_extractor(self):
 		from main import get_sales_type_visit
 		from bs4 import BeautifulSoup as soup
-		from test_review_html import general_rating_test_html
+		from test_review_html import general_rating_test_html, general_rating_test_html_empty
 
 		results = get_sales_type_visit(soup(general_rating_test_html, 'html.parser'))
 		self.assertEqual(results, ('SALES VISIT - USED', 'USED'))
+
+		results = get_sales_type_visit(soup(general_rating_test_html_empty, 'html.parser'))
+		self.assertEqual(results, ('', ''))
 
 	def test_username_extractor(self):
 		from main import get_username

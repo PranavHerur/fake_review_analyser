@@ -151,7 +151,6 @@ general_rating_test_html_empty = '''
 <div class="col-xs-6 col-sm-12 pad-none dealership-rating">
 <div class="rating-static visible-xs pad-none margin-none rating- pull-right"></div>
 <div class="rating-static hidden-xs rating-50 margin-center"></div>
-<div class="col-xs-12 hidden-xs pad-none margin-top-sm small-text dr-grey">SALES VISIT - USED</div>
 </div>
 </div>
 '''
