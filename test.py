@@ -89,6 +89,17 @@ class TestUrlCreation(unittest.TestCase):
 		results = get_dealer_recommendation(soup(specific_ratings_test_html_complex_ratings, 'html.parser'))
 		self.assertEqual(results, '')
 
+	def test_employee_ratings_extractor(self):
+		from main import get_employee_ratings
+		from bs4 import BeautifulSoup as soup
+		from test_review_html import employee_ratings_test_html, employee_ratings_test_html_complex
+
+		results = get_employee_ratings(soup(employee_ratings_test_html, 'html.parser'))
+		self.assertEqual(results, [('273456', 'Adrian "AyyDee" Cortes', '5.0'), ('640356', 'Taylor Prickett', '5.0')])
+
+		results = get_employee_ratings(soup(employee_ratings_test_html_complex, 'html.parser'))
+		self.assertEqual(results, [('273456', 'Adrian "AyyDee" Cortes', '5.0')])
+
 
 if __name__ == '__main__':
 	unittest.main()

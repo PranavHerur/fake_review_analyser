@@ -266,3 +266,93 @@ specific_ratings_test_html_complex_ratings = '''
 </div>
 </div>
 '''
+
+employee_ratings_test_html = '''
+<!-- EMPLOYEE SECTION -->
+<div class="clear-fix margin-top-sm">
+<div class="col-xs-12 lt-grey pad-left-none employees-wrapper">
+<div class="small-text">Employees Worked With </div>
+<div class="col-xs-12 col-sm-6 col-md-4 pad-left-none pad-top-sm pad-bottom-sm review-employee">
+<div class="table">
+<div class="td square-image employee-image" style="background-image: url(https://cdn-user.dealerrater.com/images/dealer/23685/employees/f00ae268a4b8.jpg)"></div>
+<div class="td valign-bottom pad-left-md pad-top-none pad-bottom-none">
+<a class="notranslate pull-left line-height-1 tagged-emp small-text teal margin-right-sm emp-273456" data-emp-id="273456" href="/sales/Adrian-AyyDee-Cortes-review-273456/">
+                                             Adrian "AyyDee" Cortes
+                                         </a>
+<div class="col-xs-12 pad-none margin-none pad-top-sm">
+<div class="relative employee-rating-badge-sm">
+<div class="col-xs-12 pad-none">
+<span class="pull-left font-14 boldest lt-grey line-height-1 pad-right-sm margin-right-sm border-right">5.0</span>
+<div class="rating-static rating-50 margin-top-none pull-left"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-4 pad-left-none pad-top-sm pad-bottom-sm review-employee">
+<div class="table">
+<div class="td square-image employee-image" style="background-image: url(https://cdn-user.dealerrater.com/images/dealer/23685/employees/ca22768af3f7.jpg)"></div>
+<div class="td valign-bottom pad-left-md pad-top-none pad-bottom-none">
+<a class="notranslate pull-left line-height-1 tagged-emp small-text teal emp-640356" data-emp-id="640356" href="/sales/Taylor-Prickett-review-640356/">
+                                             Taylor Prickett
+                                         </a>
+<div class="col-xs-12 pad-none margin-none pad-top-sm">
+<div class="relative employee-rating-badge-sm">
+<div class="col-xs-12 pad-none">
+<span class="pull-left font-14 boldest lt-grey line-height-1 pad-right-sm margin-right-sm border-right">5.0</span>
+<div class="rating-static rating-50 margin-top-none pull-left"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+'''
+
+# 2nd employee is missing rating
+employee_ratings_test_html_complex = '''
+<!-- EMPLOYEE SECTION -->
+<div class="clear-fix margin-top-sm">
+<div class="col-xs-12 lt-grey pad-left-none employees-wrapper">
+<div class="small-text">Employees Worked With </div>
+<div class="col-xs-12 col-sm-6 col-md-4 pad-left-none pad-top-sm pad-bottom-sm review-employee">
+<div class="table">
+<div class="td square-image employee-image" style="background-image: url(https://cdn-user.dealerrater.com/images/dealer/23685/employees/f00ae268a4b8.jpg)"></div>
+<div class="td valign-bottom pad-left-md pad-top-none pad-bottom-none">
+<a class="notranslate pull-left line-height-1 tagged-emp small-text teal margin-right-sm emp-273456" data-emp-id="273456" href="/sales/Adrian-AyyDee-Cortes-review-273456/">
+                                             Adrian "AyyDee" Cortes
+                                         </a>
+<div class="col-xs-12 pad-none margin-none pad-top-sm">
+<div class="relative employee-rating-badge-sm">
+<div class="col-xs-12 pad-none">
+<span class="pull-left font-14 boldest lt-grey line-height-1 pad-right-sm margin-right-sm border-right">5.0</span>
+<div class="rating-static rating-50 margin-top-none pull-left"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-4 pad-left-none pad-top-sm pad-bottom-sm review-employee">
+<div class="table">
+<div class="td square-image employee-image" style="background-image: url(https://cdn-user.dealerrater.com/images/dealer/23685/employees/ca22768af3f7.jpg)"></div>
+<div class="td valign-bottom pad-left-md pad-top-none pad-bottom-none">
+<a class="notranslate pull-left line-height-1 tagged-emp small-text teal emp-640356" data-emp-id="640356" href="/sales/Taylor-Prickett-review-640356/">
+                                             Taylor Prickett
+                                         </a>
+<div class="col-xs-12 pad-none margin-none pad-top-sm">
+<div class="relative employee-rating-badge-sm">
+<div class="col-xs-12 pad-none">
+<div class="rating-static rating-50 margin-top-none pull-left"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+'''
