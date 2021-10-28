@@ -44,9 +44,9 @@ def print_top3_offenders(df, top3_offender_ids):
 def post_process(sentiment_df):
 	sentiment_df["pos/neu"] = sentiment_df.apply(lambda r: r.pos / r.neu, axis=1)
 	sentiment_df["verb/noun"] = sentiment_df.apply(lambda r: r.count_verbs / r.count_nouns, axis=1)
-	too_postive_df = sentiment_df[
-		(sentiment_df.pos > sentiment_df.pos.quantile(.75)) & (sentiment_df.neg < sentiment_df.neg.quantile(.75)) & (
-					sentiment_df["verb/noun"] > sentiment_df["verb/noun"].quantile(.50))]
+
+	print(sentiment_df["pos/neu"].mean() + sentiment_df["pos/neu"].std()*3)
+	too_postive_df = sentiment_df[(sentiment_df.pos > (sentiment_df["pos/neu"].mean() + sentiment_df["pos/neu"].std()*3))]
 	return too_postive_df
 
 
