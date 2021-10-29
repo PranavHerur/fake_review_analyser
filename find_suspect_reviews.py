@@ -41,8 +41,7 @@ def post_process(sentiment_df):
 
 
 def get_top3_offenders(too_postive_df, search_var="pos/neu"):
-	too_postive_df = too_postive_df[(too_postive_df[search_var] > (too_postive_df[search_var].mean() + too_postive_df[
-		search_var].std() * 1))]
+	too_postive_df = too_postive_df[(too_postive_df[search_var] > (too_postive_df[search_var].mean() + too_postive_df[search_var].std() * 1))]
 
 	return too_postive_df.sort_values(search_var, ascending=False).head(3).review_id.values
 

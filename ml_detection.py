@@ -54,14 +54,7 @@ def find_best_model(df):
 	x_train = vectorizer.fit_transform(x_train)
 	x_test = vectorizer.transform(x_test)
 
-	max_acc = 0
-	best_model = None
-	for func in [get_lr, get_naive_bayes]:
-		model, acc = func(x_train, y_train, x_test, y_test)
-
-		if acc > max_acc:
-			max_acc = acc
-			best_model = model
+	best_model, acc = max((func(x_train, y_train, x_test, y_test) for func in [get_lr, get_naive_bayes]), key=lambda res: res[1])
 	with open("data/model.pkl", "wb") as f:
 		pickle.dump(best_model, f)
 
