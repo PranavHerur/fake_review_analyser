@@ -1,7 +1,8 @@
 import unittest
+from bs4 import BeautifulSoup as soup
 
 
-class TestUrlCreation(unittest.TestCase):
+class TestCrawler(unittest.TestCase):
 
 	def test_upper(self):
 		from main import get_review_page_url
@@ -13,7 +14,6 @@ class TestUrlCreation(unittest.TestCase):
 
 	def test_review_info_extractor(self):
 		from main import process_review_page
-		from bs4 import BeautifulSoup as soup
 		from test_review_html import test_html
 
 		results = process_review_page([soup(test_html, 'html.parser')])
@@ -25,7 +25,6 @@ class TestUrlCreation(unittest.TestCase):
 
 	def test_general_rating_extractor(self):
 		from main import get_general_rating
-		from bs4 import BeautifulSoup as soup
 		from test_review_html import general_rating_test_html, general_rating_test_html_501, general_rating_test_html_empty
 
 		results = get_general_rating(soup(general_rating_test_html, 'html.parser'))
@@ -39,7 +38,6 @@ class TestUrlCreation(unittest.TestCase):
 
 	def test_sales_type_extractor(self):
 		from main import get_sales_type_visit
-		from bs4 import BeautifulSoup as soup
 		from test_review_html import general_rating_test_html, general_rating_test_html_empty
 
 		results = get_sales_type_visit(soup(general_rating_test_html, 'html.parser'))
@@ -50,7 +48,6 @@ class TestUrlCreation(unittest.TestCase):
 
 	def test_username_extractor(self):
 		from main import get_username
-		from bs4 import BeautifulSoup as soup
 		from test_review_html import username_test_html, username_test_html_empty
 
 		results = get_username(soup(username_test_html, 'html.parser'))
@@ -61,7 +58,6 @@ class TestUrlCreation(unittest.TestCase):
 
 	def test_review_text_extractor(self):
 		from main import get_review_text
-		from bs4 import BeautifulSoup as soup
 		from test_review_html import review_text_test_html, review_text_test_html_empty
 
 		test_review_text = 'First time to finance and was super nervous but they made the process so easy and help me understand every little detail! Adrian was quick to help me find the PERFECT vehicle that’s reliable, affordable and something I am going to love for a long time!!!! '
@@ -73,7 +69,6 @@ class TestUrlCreation(unittest.TestCase):
 
 	def test_specific_rating_info_extractor(self):
 		from main import get_specific_ratings
-		from bs4 import BeautifulSoup as soup
 		from test_review_html import specific_ratings_test_html, specific_ratings_test_html_complex_ratings
 
 		results = get_specific_ratings(soup(specific_ratings_test_html, 'html.parser'))
@@ -87,7 +82,6 @@ class TestUrlCreation(unittest.TestCase):
 
 	def test_dealer_recommendation_extractor(self):
 		from main import get_dealer_recommendation
-		from bs4 import BeautifulSoup as soup
 		from test_review_html import specific_ratings_test_html, specific_ratings_test_html_complex_ratings
 
 		results = get_dealer_recommendation(soup(specific_ratings_test_html, 'html.parser'))
@@ -98,7 +92,6 @@ class TestUrlCreation(unittest.TestCase):
 
 	def test_employee_ratings_extractor(self):
 		from main import get_employee_ratings
-		from bs4 import BeautifulSoup as soup
 		from test_review_html import employee_ratings_test_html, employee_ratings_test_html_complex
 
 		results = get_employee_ratings(soup(employee_ratings_test_html, 'html.parser'))
