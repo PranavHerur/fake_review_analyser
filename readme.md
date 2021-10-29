@@ -2,7 +2,7 @@ To gather the review data, open command prompt and run:
 
     main.py
 
-To gather the review data, open command prompt and run:
+To execute test, run:
 
     test.py
 
