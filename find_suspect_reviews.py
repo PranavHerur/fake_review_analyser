@@ -30,10 +30,10 @@ def clean_data(df):
 				elif tag in ['NOUN', 'NNP', 'NN', 'NUM', 'NNS', 'NP', 'NNPS']:
 					review_score["count_nouns"] += 1
 
-		print(review_score)
+		# print(review_score)
 		review_sentiment_scores.append(review_score)
 	sentiment_df = pd.DataFrame(review_sentiment_scores)
-	print(sentiment_df.describe().to_string())
+	# print(sentiment_df.describe().to_string())
 	return sentiment_df
 
 
@@ -45,9 +45,9 @@ def post_process(sentiment_df):
 
 def get_top3_offenders(too_postive_df, search_var="pos/neu"):
 	print(too_postive_df.describe().to_string())
-	print(too_postive_df[search_var].mean() + too_postive_df[search_var].std() * 2)
+	print(too_postive_df[search_var].mean() + too_postive_df[search_var].std() * 1)
 	too_postive_df = too_postive_df[(too_postive_df[search_var] > (too_postive_df[search_var].mean() + too_postive_df[
-		search_var].std() * 2))]
+		search_var].std() * 1))]
 
 	print(too_postive_df.sort_values(search_var, ascending=False).to_string())
 	return too_postive_df.sort_values(search_var, ascending=False).head(3).review_id.values
@@ -57,8 +57,7 @@ def print_top3_offenders(df, top3_offender_ids):
 	print(df[df["review_id"].isin(top3_offender_ids)].to_string())
 
 
-def analyze_reviews():
-	df = read_data()
+def analyze_reviews(df):
 	sentiment_df = clean_data(df)
 	sentiment_df = post_process(sentiment_df)
 	top3_offenders = get_top3_offenders(sentiment_df)
@@ -66,5 +65,5 @@ def analyze_reviews():
 
 
 if __name__ == '__main__':
-	analyze_reviews()
+	analyze_reviews(read_data())
 
