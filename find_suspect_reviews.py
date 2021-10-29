@@ -7,7 +7,6 @@ from nltk import tokenize
 
 def read_data():
 	df = pd.read_csv("data/reviews.csv")
-	print(df.describe().to_string())
 	return df
 
 
@@ -30,10 +29,8 @@ def clean_data(df):
 				elif tag in ['NOUN', 'NNP', 'NN', 'NUM', 'NNS', 'NP', 'NNPS']:
 					review_score["count_nouns"] += 1
 
-		# print(review_score)
 		review_sentiment_scores.append(review_score)
 	sentiment_df = pd.DataFrame(review_sentiment_scores)
-	# print(sentiment_df.describe().to_string())
 	return sentiment_df
 
 
@@ -44,12 +41,9 @@ def post_process(sentiment_df):
 
 
 def get_top3_offenders(too_postive_df, search_var="pos/neu"):
-	print(too_postive_df.describe().to_string())
-	print(too_postive_df[search_var].mean() + too_postive_df[search_var].std() * 1)
 	too_postive_df = too_postive_df[(too_postive_df[search_var] > (too_postive_df[search_var].mean() + too_postive_df[
 		search_var].std() * 1))]
 
-	print(too_postive_df.sort_values(search_var, ascending=False).to_string())
 	return too_postive_df.sort_values(search_var, ascending=False).head(3).review_id.values
 
 

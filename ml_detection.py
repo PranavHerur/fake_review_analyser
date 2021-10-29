@@ -31,7 +31,6 @@ def build_model(model, x_train, y_train, x_test, y_test):
 	model.fit(x_train, y_train)
 	pred = model.predict(x_test)
 	score = accuracy_score(y_test, pred)
-	print(score)
 	return model, score
 
 
@@ -40,7 +39,6 @@ def process_dealer_reviews(model, le, cv):
 	reviews_df = pd.read_csv("data/reviews.csv")
 	x = reviews_df.review_text.apply(clean_text)
 	reviews_df["truthful_review"] = le.inverse_transform(model.predict(cv.transform(x)))
-	# print(reviews_df[reviews_df["truthful_review"] == 'deceptive'].head().to_string())
 
 	from find_suspect_reviews import analyze_reviews
 	analyze_reviews(reviews_df[reviews_df["truthful_review"] == 'deceptive'])
@@ -75,7 +73,6 @@ def find_best_model(df):
 def get_data():
 	df = pd.read_csv('data/deceptive-opinion.csv')
 	df.drop(["hotel", "source"], axis=1, inplace=True)
-	print(df.head().to_string())
 	return df
 
 
