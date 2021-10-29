@@ -62,28 +62,34 @@ def process_dealer_reviews(model, le, cv):
 
 def find_best_model(df):
 	# encode output
+	print("encoding output")
 	le = LabelEncoder()
 	y = le.fit_transform(df['deceptive'])
 
 	# clean text
+	print("cleaning text")
 	x = df['text'].apply(clean_text)
 
 	x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=0, test_size=0.2)
 
 	# TF-IDF vectorize the inputs
+	print("vectorize outputs")
 	vectorizer = TfidfVectorizer(ngram_range=(1, 4))
 	x_train = vectorizer.fit_transform(x_train)
 	x_test = vectorizer.transform(x_test)
 
 	# find best model
+	print("finding best model")
 	model_funcs = [get_lr, get_naive_bayes, get_gradient_boosting, get_multilayer_perceptron, get_random_forest]
 	best_model, acc = max((build_model(func(), x_train, y_train, x_test, y_test) for func in model_funcs), key=lambda res: res[1])
 	with open("data/model.pkl", "wb") as f:
 		pickle.dump(best_model, f)
+		print("model saved")
 
 	# use best model
 	with open("data/model.pkl", "rb") as f:
 		model = pickle.load(f)
+	print("using best model")
 	process_dealer_reviews(model, le, vectorizer)
 
 

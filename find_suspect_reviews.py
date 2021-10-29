@@ -11,6 +11,7 @@ def read_data():
 
 
 def clean_data(df):
+	print("cleaning text data")
 	stop = stopwords.words("english")
 	review_sentiment_scores = []
 	for _, row in df[["review_id", "review_text"]].iterrows():
@@ -39,6 +40,7 @@ def clean_data(df):
 
 
 def post_process(sentiment_df):
+	print("calculating ratios")
 	# calculate ratios of positive:negative words
 	sentiment_df["pos/neu"] = sentiment_df.apply(lambda r: r.pos / r.neu, axis=1)
 
@@ -49,6 +51,7 @@ def post_process(sentiment_df):
 
 def get_top3_offenders(too_postive_df, search_var="pos/neu"):
 	# find top3 offenders
+	print("finding top 3 most suspicious reviews")
 	too_postive_df = too_postive_df[(too_postive_df[search_var] > (too_postive_df[search_var].mean() + too_postive_df[search_var].std() * 1))]
 	return too_postive_df.sort_values(search_var, ascending=False).head(3).review_id.values
 

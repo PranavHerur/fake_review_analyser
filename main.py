@@ -129,10 +129,13 @@ def get_employee_ratings(review):
 def get_5_pages_of_reviews():
 	reviews = []
 	for page in range(1, 6):
+		print(f"getting page {page}")
 		html = get_review_page(page)
 		soup = bs(html, 'html.parser')
 		reviews.extend(process_review_page(soup.find_all("div", "review-entry")))
+	print("data retrieved")
 	pd.DataFrame(reviews).to_csv("data/reviews.csv", index=False)
+	print("data saved")
 
 
 if __name__ == '__main__':
