@@ -10,7 +10,6 @@ def get_review_page_url(page=1):
 
 def get_review_page(page=1):
 	url = get_review_page_url(page)
-	print(url)
 	with urllib.request.urlopen(url) as response:
 		html = response.read()
 	return html
@@ -28,7 +27,6 @@ def process_review_page(reviews_html):
 		# get review id
 		review_id = review.a["name"]
 		review_dict["review_id"] = review_id
-		print(review_dict["review_id"])
 
 		# get overall rating
 		review_dict["rating"] = get_general_rating(review)

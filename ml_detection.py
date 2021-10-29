@@ -52,9 +52,9 @@ def find_best_model(df):
 	x = df['text'].apply(clean_text)
 	x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=0, test_size=0.2)
 
-	cv = TfidfVectorizer(ngram_range=(1, 4))
-	x_train = cv.fit_transform(x_train)
-	x_test = cv.transform(x_test)
+	vectorizer = TfidfVectorizer(ngram_range=(1, 4))
+	x_train = vectorizer.fit_transform(x_train)
+	x_test = vectorizer.transform(x_test)
 
 	max_acc = 0
 	best_model = None
@@ -69,7 +69,7 @@ def find_best_model(df):
 
 	with open("data/model.pkl", "rb") as f:
 		model = pickle.load(f)
-	process_dealer_reviews(model, le, cv)
+	process_dealer_reviews(model, le, vectorizer)
 
 
 def get_data():
